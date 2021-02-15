@@ -1,0 +1,31 @@
+#install ROS (ROS version should be matched with your ubuntu version. for ubuntu 16, ROS kinetic)
+!!follow bleow link!!
+http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+#dji-osdk isntall (3.9 version)
+cd ~/
+git clone https://github.com/dji-sdk/Onboard-SDK.git
+cd Onboard-SDK
+git checkout 295915e6da116aa2871760d3478bba7ebab2f5d9
+mkdir build
+cd build
+cmake ..
+sudo make install
+
+#dji-osdk-ros install (3.8 version)
+cd catkin_ws/src
+(if you don't have 'catkin_ws' amd 'src' folder, make it by using 'mkdir' command. 
+ and do " catkin_init_workspace" command in the "catkin_ws/src" path. )
+git clone https://github.com/dji-sdk/Onboard-SDK-ROS.git
+cd Onboard-SDK-ROS
+git checkout a476b746ed3414e86b41a5ed4d04cb32ddf274d0
+cd ~/catkin_ws
+catkin_make
+
+#FFMPEG install
+cd ~/
+wget https://www.ffmpeg.org/releases/ffmpeg-2.8.5.tar.bz2
+tar -xvf ffmpeg-2.8.5.tar.bz2
+cd ffmpeg-2.8.5
+./configure --disable-yasm
+make && make install
