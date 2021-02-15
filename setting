@@ -14,10 +14,12 @@ Largely, Three part should be done.
   2-2) Set USB-ttl concvetor for serail communication
 
 3. Connection Onboard computer with m100 and Test
-  3-1) set parameter
-  3-2) execute dji-osdk without ROS
-  3-3) execute dji-osdk-ros with ROS
-
+  3-1) execute dji-osdk without ROS
+    3-1-1) set Userconfig.txt
+    3-1-2) execute sample and drone activation (through DJI GO app)
+  3-2) execute dji-osdk-ros with ROS
+    3-2-1) Set sdk.launch file
+    3-2-2) execute sample and drone activation (ADVANCED_SENSING)
 4. Possible error and solution
 
 1. Onboard computer setting
@@ -55,6 +57,15 @@ git checkout a476b746ed3414e86b41a5ed4d04cb32ddf274d0
 cd ~/catkin_ws
 catkin_make
 
+2. DJI m100 setting
+  2-1) Install DJI assistant2 for m100 and set parameter
+  Install DJI assistant2 from below link.
+  https://www.dji.com/kr/downloads/softwares/assistant-dji-2
+  
+  
+  
+  2-2) Set USB-ttl concvetor for serail communication
+
 4. possible error and solution
 1)
   CMake Warning at /opt/ros/kinetic/share/catkin/cmake/catkinConfig.cmake:76 (find_package):
@@ -73,9 +84,7 @@ sol) we should connect m100 to lightbridge2. bring lightbridge2 and turn on it. 
 connect your phone and lightbridge2. and run dji_flightcontrol_sample. pop up message will appear on your phone. you can active your drone throught this message.
 
 4) drone activation error/vehicle initialization failed when roslaunch dji_sdk sdk.launch
-it occured due to "ADVENSED_SENSING=enadbled". 
-you can delete all codes related with "ADVANCED_SENSING" from the ~/catkin_ws/src/Onboard-SDK-ROS/dji_sdk/src/modules/dji_sdk_node.cpp
-or, just replace above file with below file.
-
+it occured due to "ADVENSED_SENSING=enadbled" in dji_sdk_node.cpp
+just replace dji_sdk_node.cpp at the ~/catkin_ws/src/Onboard-SDK-ROS/dji_sdk/src/modules with modified dji_sdk_node.cpp. it is uploaded in this repository.
 
 
