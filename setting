@@ -1,14 +1,13 @@
 This documentation tell how to set DJI m100 for onboard flight.
-Largely, Three part should be done.
-
 
 1. Onboard computer setting
   1-0) Install FFMPEG
   1-1) Install ROS
   1-2) Install opencv
-  1-3) Install dji-osdk
-  1-4) Install dji-osdk-ros
-
+1-3) Install dji-osdk
+1-4) dji-osdk parameter setting
+1-4) Install dji-osdk-ros
+1-5) dji-osdk-ros parameter setting
 2. DJI m100 setting
   2-1) Install DJI assistant2 for m100 and set parameter
   2-2) Set USB-ttl concvetor for serail communication
@@ -20,24 +19,24 @@ Largely, Three part should be done.
   3-2) execute dji-osdk-ros with ROS
     3-2-1) Set sdk.launch file
     3-2-2) execute sample and drone activation (ADVANCED_SENSING)
+
 4. Possible error and solution
 
 1. Onboard computer setting
-1-0) Install FFMPEG 
+1-1) Install FFMPEG 
 cd ~/
 wget https://www.ffmpeg.org/releases/ffmpeg-2.8.5.tar.bz2
 tar -xvf ffmpeg-2.8.5.tar.bz2
 cd ffmpeg-2.8.5
 ./configure --disable-yasm
 make && make install
-
-1-1) Install ROS (ROS version should be matched with your ubuntu version. for ubuntu 16, ROS kinetic)
+1-2) Install ROS (ROS version should be matched with your ubuntu version. for ubuntu 16, ROS kinetic)
 http://wiki.ros.org/kinetic/Installation/Ubuntu
 
-1-2) Install opencv (at least, 3.4.0 version needed.)
+1-3) Install opencv (at least, 3.4.0 version needed.)
 https://webnautes.tistory.com/1186
 
-1-3) dji-osdk isntall (3.9 version)
+1-4) dji-osdk isntall (3.9 version)
 cd ~/
 git clone https://github.com/dji-sdk/Onboard-SDK.git
 cd Onboard-SDK
@@ -47,7 +46,7 @@ cd build
 cmake ..
 sudo make install
 
-1-4) dji-osdk-ros install (3.8 version)
+1-5) dji-osdk-ros install (3.8 version)
 cd catkin_ws/src
 (if you don't have 'catkin_ws' amd 'src' folder, make it by using 'mkdir' command. 
  and do " catkin_init_workspace" command in the "catkin_ws/src" path. )
@@ -58,13 +57,28 @@ cd ~/catkin_ws
 catkin_make
 
 2. DJI m100 setting
-  2-1) Install DJI assistant2 for m100 and set parameter
-  Install DJI assistant2 from below link.
+2-2) make DJI account and App
+Make DJI account from below link.
+https://developer.dji.com/
+
+Then, Create App at Developer Center of DJI developer homepage.
+ 
+
+Then, You can get App ID and App Key. These Information are used later.
+ 
+2-1) Install DJI assistant2 and set parameter
+  Install DJI assistant2 for m100 from below link.
   https://www.dji.com/kr/downloads/softwares/assistant-dji-2
-  
-  
-  
-  2-2) Set USB-ttl concvetor for serail communication
+execute DJI assistnat2 and log in. then,
+Click settings and Turn on below settings. 
+ 
+
+In the SDK tab, Set some parameters. The parameters in red box must be same as below.
+ 
+
+2-2) Set USB-TTL convertor for serial communication
+According to manual of DJI m100, make USB-TTL convertor. Connect to UART_CAN2 of m100.
+ 
 
 4. possible error and solution
 1)
